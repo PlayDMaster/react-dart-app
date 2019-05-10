@@ -1,4 +1,4 @@
-import './stats.css';
+import '../style/stats.css';
 
 import React, { Component } from 'react'
 

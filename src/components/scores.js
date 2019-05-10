@@ -1,3 +1,5 @@
+import '../style/scores.css';
+
 import React, { Component } from 'react'
 
 export default class Scores extends Component {

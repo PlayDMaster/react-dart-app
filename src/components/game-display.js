@@ -1,4 +1,4 @@
-import './game-display.css';
+import '../style/game-display.css';
 
 import React, { Component } from 'react'
 
