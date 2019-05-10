@@ -1,5 +1,6 @@
 .key-pad-box {
     max-width: 360px;
+    margin: auto;
 }
 
 .button-div {
@@ -24,4 +25,8 @@
 
 .row {
     margin: 0;
+}
+
+div.col-sm-1 {
+    padding: 0;
 }

@@ -15,7 +15,7 @@ export class Keypad extends Component {
             <div className='key-pad-box'>
                 <form className='key-pad-form' id='keypad' method='POST'>
                     <div className='row'>
-                        <div className='col'></div>
+                        <div className='col-sm-1'></div>
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds0'>{this.state.keypadDefinedScores[0]}</button>
                         </div>
@@ -32,10 +32,10 @@ export class Keypad extends Component {
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds4'>{this.state.keypadDefinedScores[4]}</button>
                         </div>
-                        <div className='col'></div>
+                        <div className='col-sm-1'></div>
                     </div>
                     <div className='row'>
-                        <div className='col'></div>
+                        <div className='col-sm-1'></div>
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds1'>{this.state.keypadDefinedScores[1]}</button>
                         </div>
@@ -53,10 +53,10 @@ export class Keypad extends Component {
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds5'>{this.state.keypadDefinedScores[5]}</button>
                         </div>
-                        <div className='col'></div>
+                        <div className='col-sm-1'></div>
                     </div>
                     <div className='row'>
-                        <div className='col'></div>
+                        <div className='col-sm-1'></div>
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds2'>{this.state.keypadDefinedScores[2]}</button>
                         </div>
@@ -72,10 +72,10 @@ export class Keypad extends Component {
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds6'>{this.state.keypadDefinedScores[6]}</button>
                         </div>
-                        <div className='col'></div>
+                        <div className='col-sm-1'></div>
                     </div>
                     <div className='row'>
-                        <div className='col'></div>
+                        <div className='col-sm-1'></div>
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds3'>{this.state.keypadDefinedScores[3]}</button>
                         </div>
@@ -91,7 +91,7 @@ export class Keypad extends Component {
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds7'>{this.state.keypadDefinedScores[7]}</button>
                         </div>
-                        <div className='col'></div>
+                        <div className='col-sm-1'></div>
                     </div>
                 </form>
             </div>

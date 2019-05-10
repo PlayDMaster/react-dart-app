@@ -3,7 +3,8 @@ import './app.css';
 import Scores from '../scores/scores';
 import Keypad from '../keypad/keypad';
 import HttpService from '../services/http-service';
-
+import GameDisplay from '../game-display/game-display';
+import Stats from '../stats/stats';
 const http = new HttpService();
 
 class App extends React.Component {
@@ -71,7 +72,27 @@ class App extends React.Component {
         <h1>Dart App</h1>
       </header>
       <body>
-        <Keypad />
+        <div className='container'>
+          <div className='row'>
+            <div className='col-sm-6 game-display'>
+              <GameDisplay />
+            </div>
+            <div className='col-sm-6 game-display'>
+              <GameDisplay />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-sm-4 stats'>
+              <Stats />
+            </div>
+            <div className='col-sm-4 key-pad'>
+              <Keypad />
+            </div>
+            <div className='col-sm-4 stats'>
+              <Stats />
+            </div>
+          </div>
+        </div>
       </body>
     </div>
   );
