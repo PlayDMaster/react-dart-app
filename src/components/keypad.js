@@ -1,5 +1,7 @@
 import '../style/keypad.css';
 import React, { Component } from 'react'
+import { subtractScore } from '../redux/actions';
+import { connect } from 'react-redux';
 
 export class Keypad extends Component {
 
@@ -7,9 +9,28 @@ export class Keypad extends Component {
         super(props);
 
         this.state = {
-            keypadDefinedScores: [26, 45, 60, 81, 85, 100, 140, 180]
+            keypadDefinedScores: [26, 45, 60, 81, 85, 100, 140, 180],
+            input: '',
+            player: 0
         }
-    }
+    };
+
+    updateInput = input => {
+        this.setState({ input });
+    };
+
+    handleClick = ev => {
+        ev.preventDefault();
+        if (this.state.player) {
+            this.props.subtractScore(this.state.player, this.state.input);
+            this.setState({ player: - 1 });
+        } else {
+            this.props.subtractScore(this.state.player, this.state.input);
+            this.setState({ player: + 1 });
+        }
+        this.setState({ input: '' });
+    };
+
     render() {
         return (
             <div className='key-pad-box'>
@@ -83,10 +104,10 @@ export class Keypad extends Component {
                             <button type="button" className="btn btn-outline-light btn-lg" id='kp0' value={1}>0</button>
                         </div>
                         <div className='col-sm-2 button-div'>
-                            <input type='number' min='0' max='180' id='kpInput' />
+                            <input type='number' min='0' max='180' id='kpInput' onChange={ev => this.updateInput(ev.target.value)} value={this.state.input} />
                         </div>
                         <div className='col-sm-2 button-div enter-button'>
-                            <button type="button" className="btn btn-outline-light btn-lg" id='kpEnter' onClick>Enter</button>
+                            <button type="button" className="btn btn-outline-light btn-lg" id='kpEnter' onClick={this.handleClick}>Enter</button>
                         </div>
                         <div className='col-sm-2 button-div'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds7'>{this.state.keypadDefinedScores[7]}</button>
@@ -100,4 +121,4 @@ export class Keypad extends Component {
     }
 }
 
-export default Keypad;
+export default connect(null, { subtractScore })(Keypad);
