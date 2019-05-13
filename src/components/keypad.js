@@ -2,6 +2,7 @@ import '../style/keypad.css';
 import React, { Component } from 'react'
 import { subtractScore } from '../redux/actions';
 import { connect } from 'react-redux';
+import { getPlayerId } from '../redux/selectors';
 
 export class Keypad extends Component {
 
@@ -11,7 +12,6 @@ export class Keypad extends Component {
         this.state = {
             keypadDefinedScores: [26, 45, 60, 81, 85, 100, 140, 180],
             input: '',
-            player: 0
         }
     };
 
@@ -22,13 +22,12 @@ export class Keypad extends Component {
     handleClick = ev => {
         ev.preventDefault();
         if (this.state.player) {
-            this.props.subtractScore(this.state.player, this.state.input);
-            this.setState({ player: - 1 });
+            this.props.subtractScore(this.props.playerId, this.state.input);
         } else {
-            this.props.subtractScore(this.state.player, this.state.input);
-            this.setState({ player: + 1 });
+            this.props.subtractScore(this.props.playerId, this.state.input);
         }
         this.setState({ input: '' });
+
     };
 
     render() {
@@ -120,5 +119,10 @@ export class Keypad extends Component {
         )
     }
 }
-
-export default connect(null, { subtractScore })(Keypad);
+const mapDispatchToProps = {
+    subtractScore
+};
+const mapStateToProps = state => {
+    return { playerId: getPlayerId(state) }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Keypad);

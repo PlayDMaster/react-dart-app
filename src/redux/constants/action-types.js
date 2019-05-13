@@ -4,3 +4,4 @@ export const SCORE_TO_SUBTRACT = 'SCORE_TO_SUBTRACT';
 export const P1_SCORES = 'P1_SCORES';
 export const P2_SCORES = 'P2_SCORES';
 export const ADD_NAME = 'ADD_NAME';
+export const CHANGE_PLAYER = 'CHANGE_PLAYER';

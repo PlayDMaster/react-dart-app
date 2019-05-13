@@ -80,10 +80,10 @@ class App extends React.Component {
           <div className='container'>
             <div className='row'>
               <div className='col-sm-6 game-display'>
-                <GameDisplay player={0} />
+                <GameDisplay playerId={0} />
               </div>
               <div className='col-sm-6 game-display'>
-                <GameDisplay player={1} />
+                <GameDisplay playerId={1} />
               </div>
             </div>
             <div className='row'>

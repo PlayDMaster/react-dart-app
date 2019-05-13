@@ -1,5 +1,5 @@
 import {
-    SCORE_TO_SUBTRACT, ADD_NAME
+    SCORE_TO_SUBTRACT
 } from './constants/action-types';
 
 
@@ -9,10 +9,5 @@ export const subtractScore = (playerId, score) => ({
         playerId,
         score
     }
-});
-
-export const addName = (name) => ({
-    type: ADD_NAME,
-    payload: name
 });
 
