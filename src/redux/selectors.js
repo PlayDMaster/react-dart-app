@@ -6,4 +6,10 @@ export const getPlayerScores = (state, activePlayer) => state.scores[activePlaye
 
 export const getGameType = (state) => state.scores.gameType;
 
-export const getPlayerScore = (state, activePlayer) => state.scores[activePlayer].scoreLeft;
+export const getMarker100 = (state, activePlayer) => state.scores[activePlayer].markers.tonTo139;
+
+export const getMarker140 = (state, activePlayer) => state.scores[activePlayer].markers.ton40To169;
+
+export const getMarker170 = (state, activePlayer) => state.scores[activePlayer].markers.ton70To179;
+
+export const getMarker180 = (state, activePlayer) => state.scores[activePlayer].markers.ton80;

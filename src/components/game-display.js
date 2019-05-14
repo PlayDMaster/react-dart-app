@@ -1,16 +1,21 @@
 import '../style/game-display.css';
-import { getPlayerScore, getPlayerName, getPlayerScores } from '../redux/selectors';
+import { getPlayerName, getPlayerScores, getGameType } from '../redux/selectors';
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-class GameDisplay extends Component {
+export class GameDisplay extends Component {
     render() {
-        const { playerScoreLeft, playerName, playerScores } = this.props.gameInfo;
+        const { playerName, playerScores, gameType } = this.props.gameInfo;
 
-        const rowOfScores = (score, scoreLeft, key) => (
+        let gameScore = gameType
+
+        const subtractScore = (score) => {
+            return gameScore -= parseInt(score)
+        }
+        const rowOfScores = (score, key) => (
             <tr className='score-row' key={`${playerName}-row-${key}`}>
                 <td key={`${playerName}-score-${key}`}>{score}</td>
-                <td key={`${playerName}-scoreLeft-${key}`}>{scoreLeft}</td>
+                <td key={`${playerName}-scoreLeft-${key}`}>{subtractScore(score)}</td>
             </tr>
         )
 
@@ -26,7 +31,7 @@ class GameDisplay extends Component {
                         {
                             playerScores ?
                                 playerScores.map((val, idx) => {
-                                    return rowOfScores(val, playerScoreLeft, idx)
+                                    return rowOfScores(val, idx)
                                 })
                                 : 'no score entered'
                         }
@@ -41,8 +46,8 @@ const mapStateToProps = (state, ownProps) => {
     const { activePlayer } = ownProps;
     const gameInfo = {
         playerName: getPlayerName(state, activePlayer),
-        playerScoreLeft: getPlayerScore(state, activePlayer),
-        playerScores: getPlayerScores(state, activePlayer)
+        playerScores: getPlayerScores(state, activePlayer),
+        gameType: getGameType(state)
     }
     return { gameInfo };
 };

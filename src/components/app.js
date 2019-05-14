@@ -8,7 +8,7 @@ import GameDisplay from '../components/game-display';
 import Stats from '../components/stats';
 
 
-class App extends React.Component {
+export class App extends React.Component {
 
   render() {
     return (
@@ -27,13 +27,13 @@ class App extends React.Component {
           </div>
           <div className='row'>
             <div className='col-sm-4 stats'>
-              <Stats />
+              <Stats activePlayer={'player1'} />
             </div>
             <div className='col-sm-4 key-pad'>
               <Keypad />
             </div>
             <div className='col-sm-4 stats'>
-              <Stats />
+              <Stats activePlayer={'player2'} />
             </div>
           </div>
         </div>
