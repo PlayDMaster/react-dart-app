@@ -3,11 +3,10 @@ import {
 } from './constants/action-types';
 
 
-export const subtractScore = (playerId, score) => ({
+export const subtractScore = (activePlayer, score) => ({
     type: SCORE_TO_SUBTRACT,
     payload: {
-        playerId,
+        activePlayer,
         score
     }
 });
-

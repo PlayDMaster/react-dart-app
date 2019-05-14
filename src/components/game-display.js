@@ -1,26 +1,35 @@
 import '../style/game-display.css';
-import { getPlayerScore, getPlayerName } from '../redux/selectors';
+import { getPlayerScore, getPlayerName, getPlayerScores } from '../redux/selectors';
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import store from '../redux/store';
 
 class GameDisplay extends Component {
-    componentDidMount() {
-        console.log(store.getState());
-    }
     render() {
-        const { playerScoreLeft, playerName } = this.props.gameInfo;
-        const id = this.props.playerId;
-        console.log(this.props);
+        const { playerScoreLeft, playerName, playerScores } = this.props.gameInfo;
+
+        const rowOfScores = (score, scoreLeft, key) => (
+            <tr className='score-row' key={`${playerName}-row-${key}`}>
+                <td key={`${playerName}-score-${key}`}>{score}</td>
+                <td key={`${playerName}-scoreLeft-${key}`}>{scoreLeft}</td>
+            </tr>
+        )
+
         return (
             <div className='game-display table-responsive' >
                 <table className='table'>
-                    <thead className='player-name'>{playerName[id]}</thead>
+                    <thead className='player-name'>{playerName}</thead>
                     <tbody className='score-display'>
                         <tr className='score-row'>
                             <td className='score-entered'></td>
-                            <td className='score-left'>{playerScoreLeft[id]}</td>
+                            <td className='score-left'>501</td>
                         </tr>
+                        {
+                            playerScores ?
+                                playerScores.map((val, idx) => {
+                                    return rowOfScores(val, playerScoreLeft, idx)
+                                })
+                                : 'no score entered'
+                        }
                     </tbody>
                 </table>
             </div>
@@ -28,10 +37,12 @@ class GameDisplay extends Component {
     }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+    const { activePlayer } = ownProps;
     const gameInfo = {
-        playerScoreLeft: getPlayerScore(state),
-        playerName: getPlayerName(state),
+        playerName: getPlayerName(state, activePlayer),
+        playerScoreLeft: getPlayerScore(state, activePlayer),
+        playerScores: getPlayerScores(state, activePlayer)
     }
     return { gameInfo };
 };

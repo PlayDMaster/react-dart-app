@@ -1,7 +1,1 @@
-export const P1_SCORE_REMAINING = 'P1_SCORE_REMAINING';
-export const P2_SCORE_REMAINING = 'P2_SCORE_REMAINING';
 export const SCORE_TO_SUBTRACT = 'SCORE_TO_SUBTRACT';
-export const P1_SCORES = 'P1_SCORES';
-export const P2_SCORES = 'P2_SCORES';
-export const ADD_NAME = 'ADD_NAME';
-export const CHANGE_PLAYER = 'CHANGE_PLAYER';

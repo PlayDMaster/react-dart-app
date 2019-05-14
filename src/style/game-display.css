@@ -5,3 +5,6 @@
     font-size: 1.5rem;
     text-align: center;
 }
+.player-name {
+    text-align: right;
+}

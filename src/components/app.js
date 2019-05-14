@@ -19,10 +19,10 @@ class App extends React.Component {
         <div className='container'>
           <div className='row'>
             <div className='col-sm-6 game-display'>
-              <GameDisplay playerId={0} />
+              <GameDisplay activePlayer={'player1'} />
             </div>
             <div className='col-sm-6 game-display'>
-              <GameDisplay playerId={1} />
+              <GameDisplay activePlayer={'player2'} />
             </div>
           </div>
           <div className='row'>
