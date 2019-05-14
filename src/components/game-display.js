@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import store from '../redux/store';
 
 class GameDisplay extends Component {
-    constructor(props) {
-        super(props);
-    }
     componentDidMount() {
         console.log(store.getState());
     }

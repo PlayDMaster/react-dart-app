@@ -76,36 +76,31 @@ class App extends React.Component {
         <header className="app-header">
           <h1>Dart App</h1>
         </header>
-        <body>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-sm-6 game-display'>
-                <GameDisplay playerId={0} />
-              </div>
-              <div className='col-sm-6 game-display'>
-                <GameDisplay playerId={1} />
-              </div>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-sm-6 game-display'>
+              <GameDisplay playerId={0} />
             </div>
-            <div className='row'>
-              <div className='col-sm-4 stats'>
-                <Stats />
-              </div>
-              <div className='col-sm-4 key-pad'>
-                <Keypad />
-              </div>
-              <div className='col-sm-4 stats'>
-                <Stats />
-              </div>
+            <div className='col-sm-6 game-display'>
+              <GameDisplay playerId={1} />
             </div>
           </div>
-        </body>
+          <div className='row'>
+            <div className='col-sm-4 stats'>
+              <Stats />
+            </div>
+            <div className='col-sm-4 key-pad'>
+              <Keypad />
+            </div>
+            <div className='col-sm-4 stats'>
+              <Stats />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 };
 
-const mapStateToProps = state => {
-  return state.playerId
-}
 
-export default connect(mapStateToProps)(App);
+export default connect()(App);

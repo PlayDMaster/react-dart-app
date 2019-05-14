@@ -119,10 +119,9 @@ export class Keypad extends Component {
         )
     }
 }
-const mapDispatchToProps = {
-    subtractScore
-};
+
 const mapStateToProps = state => {
     return { playerId: getPlayerId(state) }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Keypad);
+
+export default connect(mapStateToProps, { subtractScore })(Keypad);
