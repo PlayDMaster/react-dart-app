@@ -10,26 +10,22 @@ export class Keypad extends Component {
         super(props);
 
         this.state = {
-            keypadDefinedScores: [26, 45, 60, 81, 85, 100, 140, 180],
-            input: '',
+            keypadDefinedScores: [26, 45, 60, 81, 85, 100, 140, 180]
         }
     };
 
-    updateInput = input => {
-        this.setState({ input });
-    };
-
-    handleClick = ev => {
-        ev.preventDefault();
-        this.props.subtractScore(this.props.activePlayer, this.state.input);
-        this.setState({ input: '' });
+    handleClick = () => {
+        const elem = document.getElementById('kpInput');
+        this.props.subtractScore(this.props.activePlayer, elem.value);
+        elem.value = '';
     };
 
     addNum = ev => {
         const elem = document.getElementById('kpInput');
-        elem.value = ev.target.value;
+        elem.value += ev.target.value;
         console.log(elem);
     }
+
     render() {
         return (
             <div className='key-pad-box'>
@@ -103,7 +99,7 @@ export class Keypad extends Component {
                             <button type="button" className="btn btn-outline-light btn-lg" id='kp0' value={1} onClick={this.addNum}>0</button>
                         </div>
                         <div className='col-sm-2 button-div'>
-                            <input type='number' min='0' max='180' id='kpInput' onChange={ev => this.updateInput(ev.target.value)} value={this.state.input} />
+                            <input type='number' min='0' max={180} id='kpInput' />
                         </div>
                         <div className='col-sm-2 button-div enter-button'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpEnter' onClick={this.handleClick}>Enter</button>
