@@ -12,18 +12,57 @@ export class Keypad extends Component {
         this.state = {
             keypadDefinedScores: [26, 45, 60, 81, 85, 100, 140, 180]
         }
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.addNumKey = this.addNumKey.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     };
 
-    handleClick = () => {
+    handleClick = (ev) => {
+        ev.preventDefault();
         const elem = document.getElementById('kpInput');
         this.props.subtractScore(this.props.activePlayer, elem.value);
         elem.value = '';
+        elem.focus();
     };
 
     addNum = ev => {
         const elem = document.getElementById('kpInput');
         elem.value += ev.target.value;
-        console.log(elem);
+    }
+
+    addNumKey = ev => {
+        ev.preventDefault();
+        const elem = document.getElementById('kpInput');
+        elem.value += ev.key;
+    }
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.handleKeyPress);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handleKeyPress);
+    }
+    handleKeyPress(ev) {
+        console.log(ev)
+        switch (ev.key) {
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case '0':
+                this.addNumKey(ev);
+                break;
+            case 'Enter':
+                this.handleClick(ev);
+                break;
+            default:
+                break;
+        }
     }
 
     render() {
@@ -99,7 +138,7 @@ export class Keypad extends Component {
                             <button type="button" className="btn btn-outline-light btn-lg" id='kp0' value={1} onClick={this.addNum}>0</button>
                         </div>
                         <div className='col-sm-2 button-div'>
-                            <input type='number' min='0' max={180} id='kpInput' />
+                            <input type='number' min='0' max={180} id='kpInput' autoFocus />
                         </div>
                         <div className='col-sm-2 button-div enter-button'>
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpEnter' onClick={this.handleClick}>Enter</button>
