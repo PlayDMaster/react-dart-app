@@ -39,9 +39,11 @@ export class Keypad extends Component {
     componentDidMount() {
         document.addEventListener('keydown', this.handleKeyPress);
     }
+
     componentWillUnmount() {
         document.removeEventListener('keydown', this.handleKeyPress);
     }
+
     handleKeyPress(ev) {
         console.log(ev)
         switch (ev.key) {

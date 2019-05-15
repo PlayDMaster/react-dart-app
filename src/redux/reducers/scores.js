@@ -1,7 +1,6 @@
 import {
     SCORE_TO_SUBTRACT
 } from '../constants/action-types';
-import { stat } from 'fs';
 
 const initialState = {
     players: {
