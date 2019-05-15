@@ -29,6 +29,18 @@ export default (state = initialState, { type, payload }) => {
     switch (type) {
         case SCORE_TO_SUBTRACT:
             const { activePlayer, score } = payload;
+
+            const computedAverage = () => {
+                let sum = state[activePlayer].scoresMade.reduce((acc, curr) => {
+                    return acc + curr;
+                }, 0);
+                if (!sum) {
+                    return parseInt(score);
+                } else {
+                    return ((sum + parseInt(score)) / (state[activePlayer].scoresMade.length + 1))
+                }
+            };
+
             return {
                 ...state, // copy state
                 [activePlayer]: { // choose specific player object
@@ -48,9 +60,7 @@ export default (state = initialState, { type, payload }) => {
                         ton80: (score == 180) ?
                             state[activePlayer].markers.ton80 + 1 :
                             state[activePlayer].markers.ton80,
-                        average: (state[activePlayer].scoresMade.length > 1) ?
-                            state[activePlayer].scoresMade.reduce((acc, curr) => acc += curr) / state[activePlayer].scoresMade.length :
-                            (state[activePlayer].scoresMade.length > 0) ? state[activePlayer].scoresMade[0] : 0
+                        average: computedAverage() // compute average each time a score is input
                     }
                 }
             }
@@ -58,3 +68,4 @@ export default (state = initialState, { type, payload }) => {
             return state;
     }
 }
+
