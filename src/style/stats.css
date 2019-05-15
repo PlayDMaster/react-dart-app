@@ -1,0 +1,19 @@
+.stats-box {
+    border: 1px solid black;
+    height: 240px;
+}
+p {
+    margin: 0px;
+}
+.row {
+    line-height: 48px;
+}
+.marker {
+    text-align: right;
+    padding-right: 3px;
+}
+
+.stat {
+    text-align: left;
+    padding-left: 3px;
+}

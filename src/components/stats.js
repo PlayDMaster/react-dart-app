@@ -19,12 +19,45 @@ export class Stats extends Component {
 
         return (
             <div className='stats-box'>
-                <div className='stats-row'>
-                    <p>3 dart avg: {average.toFixed(2)}</p>
-                    <p>100+: {tonTo139}</p>
-                    <p>140+: {ton40To169}</p>
-                    <p>170+: {ton70To179}</p>
-                    <p>180: {ton80}</p>
+                <div className='row'>
+                    <div className='col-sm-6 marker'>
+                        <p>3 dart avg:</p>
+                    </div>
+                    <div className='col-sm-6 stat'>
+                        <p>{average.toFixed(2)}</p>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-sm-6 marker'>
+                        <p>100+:</p>
+                    </div>
+                    <div className='col-sm-6 stat'>
+                        <p>{tonTo139}</p>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-sm-6 marker'>
+                        <p>140+:</p>
+                    </div>
+                    <div className='col-sm-6 stat'>
+                        <p>{ton40To169}</p>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-sm-6 marker'>
+                        <p>170+:</p>
+                    </div>
+                    <div className='col-sm-6 stat'>
+                        <p>{ton70To179}</p>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-sm-6 marker'>
+                        <p>180:</p>
+                    </div>
+                    <div className='col-sm-6 stat'>
+                        <p>{ton80}</p>
+                    </div>
                 </div>
             </div>
         )

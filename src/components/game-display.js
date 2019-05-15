@@ -20,9 +20,13 @@ export class GameDisplay extends Component {
         )
 
         return (
-            <div className='game-display table-responsive' >
+            <div className='game-display' >
                 <table className='table'>
-                    <thead className='player-name'>{playerName}</thead>
+                    <thead className='player-name'>
+                        <tr>
+                            <th>{playerName}</th>
+                        </tr>
+                    </thead>
                     <tbody className='score-display'>
                         <tr className='score-row'>
                             <td className='score-entered'></td>

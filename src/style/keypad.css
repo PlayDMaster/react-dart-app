@@ -8,6 +8,10 @@
     height: 60px;
 }
 
+.col-sm-2 {
+    padding: 0px;
+}
+
 .button-div button {
     color: black;
     width: 60px;
