@@ -1,5 +1,5 @@
 import {
-    SCORE_TO_SUBTRACT
+    SCORE_TO_SUBTRACT, SET_GAME_TYPE
 } from './constants/action-types';
 
 
@@ -9,4 +9,9 @@ export const subtractScore = (activePlayer, score) => ({
         activePlayer,
         score
     }
+});
+
+export const setGameType = (payload) => ({
+    type: SET_GAME_TYPE,
+    payload
 });

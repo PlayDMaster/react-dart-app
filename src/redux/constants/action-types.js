@@ -1,1 +1,2 @@
 export const SCORE_TO_SUBTRACT = 'SCORE_TO_SUBTRACT';
+export const SET_GAME_TYPE = 'SET_GAME_TYPE';

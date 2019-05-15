@@ -7,15 +7,15 @@ import {
     getMarker140,
     getMarker170,
     getMarker180,
-    getPlayerScores
+    getPlayerAverage
 } from '../redux/selectors';
 
 export class Stats extends Component {
     render() {
-        const { tonTo139, ton40To169, ton70To179, ton80, playerScores } = this.props.statsInfo;
+        const { tonTo139, ton40To169, ton70To179, ton80, average } = this.props.statsInfo;
 
-        const average = (playerScores.length > 1) ? playerScores.reduce((acc, curr) => acc += curr) / playerScores.length :
-            (playerScores.length > 0) ? playerScores[0] : 0
+        // const average = (playerScores.length > 1) ? playerScores.reduce((acc, curr) => acc += curr) / playerScores.length :
+        //     (playerScores.length > 0) ? playerScores[0] : 0
 
         return (
             <div className='stats-box'>
@@ -71,7 +71,7 @@ const mapStateToProps = (state, ownProps) => {
         ton40To169: getMarker140(state, activePlayer),
         ton70To179: getMarker170(state, activePlayer),
         ton80: getMarker180(state, activePlayer),
-        playerScores: getPlayerScores(state, activePlayer)
+        average: getPlayerAverage(state, activePlayer)
     }
     return { statsInfo };
 };
