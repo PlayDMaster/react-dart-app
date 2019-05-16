@@ -1,5 +1,5 @@
-import '../style/game-display.css';
-import { getPlayerName, getPlayerScores, getGameType } from '../redux/selectors';
+import '../../style/game-display.css';
+import { getPlayerName, getPlayerScores, getGameType } from '../../redux/selectors';
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 

@@ -1,4 +1,4 @@
-import '../style/stats.css';
+import '../../style/stats.css';
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import {
     getMarker170,
     getMarker180,
     getPlayerAverage
-} from '../redux/selectors';
+} from '../../redux/selectors';
 
 export class Stats extends Component {
     render() {

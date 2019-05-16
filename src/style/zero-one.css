@@ -1,0 +1,11 @@
+.key-pad {
+    min-height: 30vh;
+  }
+  
+  .game-display {
+    min-height: 60vh
+  }
+  
+  div.key-pad {
+    padding: 0;
+  }

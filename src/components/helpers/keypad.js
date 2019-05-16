@@ -1,8 +1,8 @@
-import '../style/keypad.css';
+import '../../style/keypad.css';
 import React, { Component } from 'react'
-import { subtractScore } from '../redux/actions';
+import { subtractScore } from '../../redux/actions';
 import { connect } from 'react-redux';
-import { getActivePlayer } from '../redux/selectors';
+import { getActivePlayer } from '../../redux/selectors';
 
 export class Keypad extends Component {
 
