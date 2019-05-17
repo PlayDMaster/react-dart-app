@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../style/app.css';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 // import components
 import ZeroOne from '../zero-one/zero-one';
@@ -11,7 +11,6 @@ import Bobs27 from '../bobs27/bobs27';
 import Holyoake from '../holyoake/holyoake';
 import Birds from '../birds/birds';
 
-const Menu = withRouter(GameSetup);
 
 export class App extends React.Component {
 
@@ -23,12 +22,12 @@ export class App extends React.Component {
         </header>
         <div className='container'>
           <BrowserRouter>
+            <Route path='/' exact component={GameSetup} />
             <Route path='/501' component={ZeroOne} />
             <Route path='/121' component={OneTwentyOne} />
             <Route path='/Bobs27' component={Bobs27} />
             <Route path='/Holyoake' component={Holyoake} />
             <Route path='/Birds' component={Birds} />
-            <Menu />
           </BrowserRouter>
         </div>
       </div>
