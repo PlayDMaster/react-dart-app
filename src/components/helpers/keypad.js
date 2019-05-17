@@ -46,7 +46,6 @@ export class Keypad extends Component {
     }
 
     handleKeyPress(ev) {
-        console.log(ev)
         switch (ev.key) {
             case '1':
             case '2':
