@@ -25,13 +25,10 @@ export class GameDisplay extends Component {
                     <thead className='player-name'>
                         <tr>
                             <th>{playerName}</th>
+                            <th>{gameType}</th>
                         </tr>
                     </thead>
                     <tbody className='score-display'>
-                        <tr className='score-row'>
-                            <td className='score-entered'></td>
-                            <td className='score-left'>501</td>
-                        </tr>
                         {
                             playerScores ?
                                 playerScores.map((val, idx) => {
@@ -46,12 +43,11 @@ export class GameDisplay extends Component {
     }
 };
 
-const mapStateToProps = (state, ownProps) => {
-    const { activePlayer } = ownProps;
+const mapStateToProps = (state) => {
     const gameInfo = {
-        playerName: getPlayerName(state, activePlayer),
-        playerScores: getPlayerScores(state, activePlayer),
-        gameType: getGameType(state)
+        gameType: getGameType(state),
+        playerName: getPlayerName(state),
+        playerScores: getPlayerScores(state, getGameType(state))
     }
     return { gameInfo };
 };

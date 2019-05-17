@@ -2,7 +2,7 @@ import '../../style/keypad.css';
 import React, { Component } from 'react'
 import { subtractScore } from '../../redux/actions';
 import { connect } from 'react-redux';
-import { getActivePlayer } from '../../redux/selectors';
+import { getGameType } from '../../redux/selectors';
 
 export class Keypad extends Component {
 
@@ -15,12 +15,13 @@ export class Keypad extends Component {
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.addNumKey = this.addNumKey.bind(this);
         this.handleClick = this.handleClick.bind(this);
+
     };
 
     handleClick = (ev) => {
         ev.preventDefault();
         const elem = document.getElementById('kpInput');
-        this.props.subtractScore(this.props.activePlayer, elem.value);
+        this.props.subtractScore(elem.value, this.props.gameType);
         elem.value = '';
         elem.focus();
     };
@@ -157,8 +158,8 @@ export class Keypad extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return { activePlayer: getActivePlayer(state) }
-}
+const mapStateToProps = (state) => ({
+    gameType: getGameType(state)
+})
 
 export default connect(mapStateToProps, { subtractScore })(Keypad);
