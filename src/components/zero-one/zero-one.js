@@ -1,9 +1,9 @@
 import '../../style/zero-one.css';
 
 // import components
-import GameDisplay from './game-display';
+import GameDisplay from '../helpers/game-display';
 import Keypad from '../helpers/keypad';
-import Stats from './stats';
+import Stats from '../helpers/stats';
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
