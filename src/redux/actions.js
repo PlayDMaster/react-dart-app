@@ -8,14 +8,16 @@ import {
     DOUBLE_HIT,
     INCREMENT_LIVES,
     DECREMENT_LIVES,
-    BOBS_SCORE
+    BOBS_SCORE,
+    NEW_GAME
 } from './constants/action-types';
 
 
-export const subtractScore = (payload, gameType) => ({
+export const subtractScore = (payload, gameType, gameId) => ({
     type: SCORE_TO_SUBTRACT,
     payload,
-    gameType
+    gameType,
+    gameId
 });
 
 export const setGameType = (payload) => ({
@@ -43,10 +45,11 @@ export const shotAtDouble = (gameType) => ({
     gameType
 })
 
-export const doubleHit = (payload, gameType) => ({
+export const doubleHit = (payload, gameType, gameId) => ({
     type: DOUBLE_HIT,
     payload,
-    gameType
+    gameType,
+    gameId
 })
 export const incrementLives = (gameType) => ({
     type: INCREMENT_LIVES,
@@ -61,3 +64,9 @@ export const bobsScore = (payload, gameType) => ({
     payload,
     gameType
 })
+export const newGame = (gameType, gameId) => ({
+    type: NEW_GAME,
+    gameType,
+    gameId
+})
+

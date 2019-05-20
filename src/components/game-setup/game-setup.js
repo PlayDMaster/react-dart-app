@@ -2,7 +2,8 @@ import '../../style/game-setup.css';
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { setGameType } from '../../redux/actions';
+import { setGameType, newGame } from '../../redux/actions';
+import { getGameId, getGameType } from '../../redux/selectors';
 
 export class GameSetup extends Component {
 
@@ -13,6 +14,7 @@ export class GameSetup extends Component {
     handleClick = () => {
         const elem = document.getElementById('game-select');
         this.props.setGameType(elem.value);
+        this.props.newGame(elem.value, this.props.gameId)
         this.props.history.push(`/${elem.value}`);
     }
 
@@ -37,5 +39,10 @@ export class GameSetup extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    gameId: getGameId(state, getGameType(state))
+})
 
-export default connect(null, { setGameType })(GameSetup)
+
+
+export default connect(mapStateToProps, { setGameType, newGame })(GameSetup)

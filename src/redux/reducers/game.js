@@ -3,7 +3,7 @@ import {
 } from '../constants/action-types';
 
 const initialState = {
-    gameType: 501
+    gameType: '501'
 }
 
 export default (state = initialState, { type, payload }) => {

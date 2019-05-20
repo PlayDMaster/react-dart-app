@@ -8,3 +8,4 @@ export const DOUBLE_HIT = 'DOUBLE_HIT';
 export const INCREMENT_LIVES = 'INCREMENT_LIVES';
 export const DECREMENT_LIVES = 'DECREMENT_LIVES';
 export const BOBS_SCORE = 'BOBS_SCORE';
+export const NEW_GAME = 'NEW_GAME'

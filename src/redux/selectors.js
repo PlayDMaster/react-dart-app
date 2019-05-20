@@ -15,3 +15,7 @@ export const getMarker170 = (state, gameType) => state[gameType].ton70To179;
 export const getMarker180 = (state, gameType) => state[gameType].ton80;
 
 export const getTotalState = (state, gameType) => state[gameType];
+
+export const getScoreLeft = (state, gameType) => state[gameType].scoreLeft;
+
+export const getGameId = (state, gameType) => state[gameType].gameId;

@@ -1,8 +1,8 @@
 import '../../style/keypad.css';
 import React, { Component } from 'react'
-import { subtractScore } from '../../redux/actions';
+import { subtractScore, doubleHit, newGame } from '../../redux/actions';
 import { connect } from 'react-redux';
-import { getGameType } from '../../redux/selectors';
+import { getGameType, getScoreLeft, getGameId } from '../../redux/selectors';
 
 export class Keypad extends Component {
 
@@ -10,18 +10,24 @@ export class Keypad extends Component {
         super(props);
 
         this.state = {
-            keypadDefinedScores: [26, 45, 60, 81, 85, 100, 140, 180]
+            keypadDefinedScores: [26, 45, 60, 81, 85, 100, 140, 180],
+            lastScore: 0,
+            gameIdChecker: 0
         }
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.addNumKey = this.addNumKey.bind(this);
         this.handleClick = this.handleClick.bind(this);
-
     };
 
     handleClick = (ev) => {
         ev.preventDefault();
+        if (this.state.gameIdChecker !== this.props.gameId) {
+            this.props.newGame(this.props.gameType, this.props.gameId);
+            this.setState({ gameIdChecker: this.state.gameIdChecker + 1 })
+        }
         const elem = document.getElementById('kpInput');
-        this.props.subtractScore(elem.value, this.props.gameType);
+        this.props.subtractScore(elem.value, this.props.gameType, this.props.gameId);
+        this.setState({ lastScore: elem.value })
         elem.value = '';
         elem.focus();
     };
@@ -43,6 +49,11 @@ export class Keypad extends Component {
 
     componentWillUnmount() {
         document.removeEventListener('keydown', this.handleKeyPress);
+    }
+    componentDidUpdate() {
+        if (this.props.scoreLeft === 0) {
+            this.props.doubleHit(this.state.lastScore, this.props.gameType, this.props.gameId)
+        }
     }
 
     handleKeyPress(ev) {
@@ -137,7 +148,7 @@ export class Keypad extends Component {
                             <button type="button" className="btn btn-outline-light btn-lg" id='kpds3' onClick={this.addNum} value={this.state.keypadDefinedScores[3]}>{this.state.keypadDefinedScores[3]}</button>
                         </div>
                         <div className='col-sm-2 button-div'>
-                            <button type="button" className="btn btn-outline-light btn-lg" id='kp0' value={1} onClick={this.addNum}>0</button>
+                            <button type="button" className="btn btn-outline-light btn-lg" id='kp0' value={0} onClick={this.addNum}>0</button>
                         </div>
                         <div className='col-sm-2 button-div'>
                             <input type='number' min='0' max={180} id='kpInput' autoFocus />
@@ -158,7 +169,9 @@ export class Keypad extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    gameType: getGameType(state)
+    gameType: getGameType(state),
+    scoreLeft: getScoreLeft(state, getGameType(state)),
+    gameId: getGameId(state, getGameType(state))
 })
 
-export default connect(mapStateToProps, { subtractScore })(Keypad);
+export default connect(mapStateToProps, { subtractScore, doubleHit, newGame })(Keypad);

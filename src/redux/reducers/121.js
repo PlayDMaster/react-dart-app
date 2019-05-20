@@ -25,7 +25,7 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload, gameType }) => {
-    if (gameType == 121) {
+    if (gameType === '121') {
         const score = parseInt(payload)
         switch (type) {
             case SCORE_TO_SUBTRACT:

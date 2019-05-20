@@ -1,16 +1,21 @@
-export const computedAverage = (scoresMade, score) => {
-    let sum = scoresMade.reduce((acc, curr) => {
-        return acc + curr;
-    }, 0);
+export const computedAverage = (scoresMade, score, gameId) => {
+
+    const values = Object.values(scoresMade)
+    var sum = 0;
+    var arrayLength = 0;
+    for (let i = 0; i <= gameId; i++) {
+        sum += values[i].reduce((a, c) => { return a + c }, 0);
+        arrayLength += values[i].length;
+    }
     if (!sum) {
-        return parseInt(score);
+        return score;
     } else {
-        return ((sum + parseInt(score)) / (scoresMade.length + 1));
+        return (sum + score) / (arrayLength + 1);
     }
 };
 
 export const percentage = (attempts, success) => {
-    percentage = success / attempts * 100
+    let percentage = success / attempts * 100
     return percentage;
 };
 

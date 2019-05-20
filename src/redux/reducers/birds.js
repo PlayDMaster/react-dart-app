@@ -30,7 +30,7 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload, gameType }) => {
-    if (gameType == 'birds') {
+    if (gameType === 'birds') {
         const score = parseInt(payload)
         switch (type) {
             case SCORE_TO_SUBTRACT:

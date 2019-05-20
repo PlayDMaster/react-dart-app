@@ -26,7 +26,7 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload, gameType }) => {
-    if (gameType == 'bobs27') {
+    if (gameType === 'bobs27') {
         let score = parseInt(payload)
         switch (type) {
             case SHOT_AT_DOUBLE:
