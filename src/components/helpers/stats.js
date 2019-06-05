@@ -8,12 +8,13 @@ import {
     getMarker170,
     getMarker180,
     getPlayerAverage,
-    getGameType
+    getGameType,
+    getCheckoutPercentage
 } from '../../redux/selectors';
 
 export class Stats extends Component {
     render() {
-        const { tonTo139, ton40To169, ton70To179, ton80, average } = this.props.statsInfo;
+        const { tonTo139, ton40To169, ton70To179, ton80, average, checkoutPercentage } = this.props.statsInfo;
 
         return (
             <div className='stats-box'>
@@ -57,6 +58,14 @@ export class Stats extends Component {
                         <p>{ton80}</p>
                     </div>
                 </div>
+                <div className='row'>
+                    <div className='col-sm-6 marker'>
+                        <p>Checkout Percentage:</p>
+                    </div>
+                    <div className='col-sm-6 stat'>
+                        <p>{checkoutPercentage}%</p>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -69,7 +78,8 @@ const mapStateToProps = (state) => {
         ton40To169: getMarker140(state, getGameType(state)),
         ton70To179: getMarker170(state, getGameType(state)),
         ton80: getMarker180(state, getGameType(state)),
-        average: getPlayerAverage(state, getGameType(state))
+        average: getPlayerAverage(state, getGameType(state)),
+        checkoutPercentage: getCheckoutPercentage(state, getGameType(state))
     }
     return { statsInfo };
 };

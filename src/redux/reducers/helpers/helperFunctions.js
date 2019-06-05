@@ -14,9 +14,9 @@ export const computedAverage = (scoresMade, score, gameId) => {
     }
 };
 
-export const percentage = (attempts, success) => {
-    let percentage = success / attempts * 100
-    return percentage;
+export const percentage = (success, attempts) => {
+    let percentage = (success / attempts) * 100
+    return percentage.toFixed(2);
 };
 
 export const counter = (score, low, high, value) => {

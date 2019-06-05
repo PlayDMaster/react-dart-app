@@ -19,3 +19,9 @@ export const getTotalState = (state, gameType) => state[gameType];
 export const getScoreLeft = (state, gameType) => state[gameType].scoreLeft;
 
 export const getGameId = (state, gameType) => state[gameType].gameId;
+
+export const getDoublesHit = (state, gameType) => state[gameType].doublesHit;
+
+export const getShotsAtDouble = (state, gameType) => state[gameType].shotsAtDouble;
+
+export const getCheckoutPercentage = (state, gameType) => state[gameType].checkoutPercentage;

@@ -30,7 +30,8 @@ export default (state = initialState, { type, payload, gameType, gameId }) => {
                     scoresMade: {
                         ...state.scoresMade,
                         [gameId]: []
-                    }
+                    },
+                    checkoutPercentage: (state.shotsAtDouble && state.doublesHit) ? percentage(state.doublesHit, state.shotsAtDouble) : state.checkoutPercentage
                 }
             case SCORE_TO_SUBTRACT:
                 return {
@@ -52,8 +53,7 @@ export default (state = initialState, { type, payload, gameType, gameId }) => {
             case SHOT_AT_DOUBLE:
                 return {
                     ...state,
-                    shotsAtDouble: state.shotsAtDouble + 1,
-                    checkoutPercentage: percentage(state.shotsAtDouble, state.doublesHit)
+                    shotsAtDouble: state.shotsAtDouble + score
                 }
             case DOUBLE_HIT:
                 return {

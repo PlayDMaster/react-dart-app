@@ -40,8 +40,9 @@ export const gamesCompletedCounter = (gameType) => ({
     gameType
 })
 
-export const shotAtDouble = (gameType) => ({
+export const shotAtDouble = (payload, gameType) => ({
     type: SHOT_AT_DOUBLE,
+    payload,
     gameType
 })
 
@@ -69,4 +70,3 @@ export const newGame = (gameType, gameId) => ({
     gameType,
     gameId
 })
-
